@@ -4,7 +4,12 @@ import { PageProps } from '@/types'
 const Navigation: FC<PageProps> = ({ auth }) => {
 return (
     <nav className="flex flex-1 justify-between">
-    <p className='uppercase font-bold text-white text-xl'>BookingApp</p>
+         <Link
+                href={route('home')}
+                className="className='uppercase font-bold text-white text-xl"
+            >
+                BookingApp
+            </Link>
     <div className='text-white'>
         {auth.user ? (
             <Link
