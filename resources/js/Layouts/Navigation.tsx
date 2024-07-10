@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { PageProps } from '@/types'
 const Navigation: FC<PageProps> = ({ auth }) => {
 return (
-    <nav className="flex flex-1 justify-between">
+    <nav className="flex flex-1 justify-between px-4 lg:px-0">
          <Link
                 href={route('home')}
                 className="className='uppercase font-bold text-white text-xl"
