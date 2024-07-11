@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('HomePage/HomePage', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-    ]);
-})->name('home');;
+    return Inertia::render('HomePage/HomePage');
+})->name('home');
+Route::get('/hotelList', function () {
+    return Inertia::render('HotelList/HotelList');
+})->name('hotelList');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -26,4 +26,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
