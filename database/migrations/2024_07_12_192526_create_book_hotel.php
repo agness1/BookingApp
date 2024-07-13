@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', 250);
             $table->text('description');
-            $table->integer('RoomCount');
             $table->integer('StarCount');
             $table->foreignId('CitiesID')->references('id')->on('cities')->cascadeOnDelete();
+            $table->timestamps();
         });
     }
 

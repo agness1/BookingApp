@@ -16,6 +16,7 @@ return new class extends Migration
             $table->decimal('price', total: 8, places: 2);
             $table->integer('amount');
             $table->foreignId('HotelID')->references('id')->on('hotels')->cascadeOnDelete();
+            $table->timestamps();
         });
     }
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->foreignId('HotelID')->references('id')->on('hotels')->cascadeOnDelete();
             $table->foreignId('UserID')->references('id')->on('users')->cascadeOnDelete();
+            $table->timestamps();
         });
     }
 
