@@ -20,6 +20,7 @@ class HotelFactory extends Factory
             'name' => $this->faker->company,
             'description' => $this->faker->paragraph,
             'StarCount' => $this->faker->numberBetween(1, 5),
+            'image_url' => $this->faker->imageUrl(),
             'CitiesID' => \App\Models\City::factory(),
         ];
     }

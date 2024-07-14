@@ -14,6 +14,7 @@ class Hotel extends Model
         'description',
         'StarCount',
         'CitiesID',
+        'image_url'
     ];
 
     public function city()
