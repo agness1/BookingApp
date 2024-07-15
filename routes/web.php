@@ -5,6 +5,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\CountryController;
 
 Route::get('/', function () {
     return Inertia::render('HomePage/HomePage');
@@ -30,5 +32,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/hotels', [HotelController::class, 'showHotels']);
+Route::get('/cities', [CityController::class, 'showCities']);
+Route::get('/countries', [CountryController::class, 'showCountries']);
 
 require __DIR__ . '/auth.php';
