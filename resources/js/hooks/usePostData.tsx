@@ -7,7 +7,7 @@ interface PostState<T> {
   error: AxiosError | null;
 }
 
-const usePostData = <T, R = any>(url: string) => {
+const UsePostData = <T, R = any>(url: string) => {
   const [state, setState] = useState<PostState<R>>({
     data: null,
     loading: false,
@@ -28,4 +28,4 @@ const usePostData = <T, R = any>(url: string) => {
   return { ...state, postData };
 };
 
-export default usePostData;
+export default UsePostData;
