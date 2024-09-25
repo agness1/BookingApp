@@ -30,7 +30,6 @@ class HotelController extends Controller
     }
     public function showAvailableHotels(Request $request)
     {
-
         $validatedData = $request->validate([
             'city' => 'required|string',
             'start_date' => 'required|date',
@@ -40,8 +39,7 @@ class HotelController extends Controller
         $cityName = $validatedData['city'];
         $startDate = Carbon::parse($validatedData['start_date'])->format('Y-m-d');
         $endDate = Carbon::parse($validatedData['end_date'])->format('Y-m-d');
-
-        $city = City::where('name', $cityName)->first();
+        $city = City::where('name', $cityName)->with(['country'])->first();
 
         if (!$city) {
             return response()->json(['message' => 'City not found'], 404);
@@ -63,8 +61,7 @@ class HotelController extends Controller
                             ->orWhereRaw('? BETWEEN start_date AND end_date', [$endDate]);
                     })
                     ->exists();
-
-                if (!$hasReservation && $room->amount > 0) {
+                if (!$hasReservation) {
                     $availableHotels[] = [
                         'hotel_name' => $hotel->name,
                         'hotel_id' => $hotel->id,
@@ -72,6 +69,7 @@ class HotelController extends Controller
                         'hotel_img' => $hotel->image_url,
                         'hotel_StarCount' => $hotel->StarCount,
                         'city_name' => $city->name,
+                        'country_name' => $city->country->name,
                         'reviews_count' => $hotel->reviews->count(),
                         'room' => [
                             'id' => $room->id,
@@ -93,6 +91,7 @@ class HotelController extends Controller
 
         return response()->json(['available_hotels' => $availableHotels]);
     }
+
 
     public function showHotelDetails($id)
     {
