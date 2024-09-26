@@ -12,7 +12,7 @@ class ReservationController extends Controller
     {
         $user = Auth::user();
 
-        $reservations = Reservation::where('UserID', $user->id)
+        $reservations = Reservation::where('user_id', $user->id)
             ->with('rooms.hotel')
             ->get();
 
@@ -28,8 +28,8 @@ class ReservationController extends Controller
         ]);
 
         $reservation = Reservation::create([
-            'RoomID' => $validatedData['roomId'],
-            'UserID' => Auth::id(),
+            'room_id' => $validatedData['roomId'],
+            'user_id' => Auth::id(),
             'start_date' => $validatedData['startDate'],
             'end_date' => $validatedData['endDate'],
             'total_price' => $validatedData['totalPrice']

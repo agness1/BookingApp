@@ -12,7 +12,7 @@ class ReviewController extends Controller
     public function showUserReview()
     {
         $user = Auth::user();
-        $reviews = Review::where('UserID', $user->id)->get();
+        $reviews = Review::where('user_id', $user->id)->get();
         $responseData = [];
         foreach ($reviews as $reviewItem) {
             $responseData[] = [
@@ -28,7 +28,7 @@ class ReviewController extends Controller
     public function showHotelReview($id)
     {
         $hotel = Hotel::find($id);
-        $reviews = Review::where('HotelID', $hotel->id)
+        $reviews = Review::where('hotel_id', $hotel->id)
             ->with('user')
             ->get();
         return response()->json($reviews);
@@ -46,8 +46,8 @@ class ReviewController extends Controller
             'title' => $validatedData['title'],
             'rate' => $validatedData['rate'],
             'description' => $validatedData['description'],
-            'HotelID' => $validatedData['hotelId'],
-            'UserID' => $validatedData['userId']
+            'hotel_id' => $validatedData['hotelId'],
+            'user_id' => $validatedData['userId']
         ]);
         return response()->json(['message' => 'Data added successfully', 'data' => $review], 201);
     }

@@ -21,7 +21,7 @@ class HotelController extends Controller
                 'id' => $hotelItem->id,
                 'name' => $hotelItem->name,
                 'description' => $hotelItem->description,
-                'starCount' => $hotelItem->StarCount,
+                'starCount' => $hotelItem->star_count,
                 'city' => $hotelItem->city->name,
                 'image' => $hotelItem->image_url
             ];
@@ -45,7 +45,7 @@ class HotelController extends Controller
             return response()->json(['message' => 'City not found'], 404);
         }
 
-        $hotels = Hotel::where('CitiesID', $city->id)
+        $hotels = Hotel::where('city_id', $city->id)
             ->with(['rooms', 'reviews'])
             ->get();
 
@@ -53,7 +53,7 @@ class HotelController extends Controller
 
         foreach ($hotels as $hotel) {
             foreach ($hotel->rooms as $room) {
-                $hasReservation = Reservation::where('RoomID', $room->id)
+                $hasReservation = Reservation::where('room_id', $room->id)
                     ->where(function ($query) use ($startDate, $endDate) {
                         $query->whereBetween('start_date', [$startDate, $endDate])
                             ->orWhereBetween('end_date', [$startDate, $endDate])
@@ -67,7 +67,7 @@ class HotelController extends Controller
                         'hotel_id' => $hotel->id,
                         'hotel_description' => $hotel->description,
                         'hotel_img' => $hotel->image_url,
-                        'hotel_StarCount' => $hotel->StarCount,
+                        'hotel_StarCount' => $hotel->star_count,
                         'city_name' => $city->name,
                         'country_name' => $city->country->name,
                         'reviews_count' => $hotel->reviews->count(),
@@ -101,9 +101,9 @@ class HotelController extends Controller
             return response()->json(['message' => 'Hotel not found'], 404);
         }
 
-        $hotelPrice = Room::where('HotelID', $hotel->id)->first();
+        $hotelPrice = Room::where('hotel_id', $hotel->id)->first();
 
-        $city = City::where('id', $hotel->CitiesID)->first();
+        $city = City::where('id', $hotel->city_id)->first();
 
         if (!$hotel) {
             return response()->json(['message' => 'Hotel not found'], 404);
