@@ -10,8 +10,8 @@ class Reservation extends Model
     use HasFactory;
     
     protected $fillable = [
-        'RoomID',
-        'UserID',
+        'room_id',
+        'user_id',
         'start_date',
         'end_date',
         'total_price',
@@ -19,10 +19,10 @@ class Reservation extends Model
 
    public function rooms()
     {
-        return $this->belongsTo(Room::class, 'RoomID' );
+        return $this->belongsTo(Room::class, 'room_id' );
     }
    public function user()
     {
-        return $this->belongsTo(User::class, "UserID");
+        return $this->belongsTo(User::class, "user_id");
     }
 }

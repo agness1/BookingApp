@@ -11,18 +11,19 @@ class Review extends Model
     
     protected $fillable = [
         'title',
+        'rate',
         'description',
-        'HotelID',
-        'UserID',
+        'hotel_id',
+        'user_id',
     ];
 
     public function hotel()
     {
-        return $this->belongsTo(Hotel::class);
+        return $this->belongsTo(Hotel::class, 'hotel_id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, "user_id" );
     }
 }

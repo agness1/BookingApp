@@ -11,15 +11,15 @@ class City extends Model
 
     protected $fillable = [
        'name',
-       'CountryID'
+       'country_id'
     ];
 
     public function country() 
     {
-        return $this->belongsTo(Country::class);
+        return $this->belongsTo(Country::class, 'country_id' );
     }
     public function hotels()
     {
-        return $this->hasMany(Hotel::class, "CitiesID");
+        return $this->hasMany(Hotel::class, "city_id");
     }
 }

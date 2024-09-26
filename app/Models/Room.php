@@ -11,16 +11,15 @@ class Room extends Model
 
     protected $fillable = [
        'price',
-       'amount',
-       'HotelID'
+       'hotel_id'
     ];
 
     public function hotel()
     {
-        return $this->belongsTo(Hotel::class, 'HotelID');
+        return $this->belongsTo(Hotel::class, 'hotel_id');
     }
     public function reservations()
     {
-        return $this->hasMany(Reservation::class, "RoomID"); 
+        return $this->hasMany(Reservation::class, "room_id"); 
     }
 }

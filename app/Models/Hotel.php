@@ -12,21 +12,21 @@ class Hotel extends Model
     protected $fillable = [
         'name',
         'description',
-        'StarCount',
-        'CitiesID',
+        'star_count',
+        'city_id',
         'image_url'
     ];
 
     public function city()
     {
-        return $this->belongsTo(City::class, "CitiesID");
+        return $this->belongsTo(City::class, "city_id");
     }
     public function reviews()
     {
-        return $this->hasMany(Review::class. "HotelID");
+        return $this->hasMany(Review::class, "hotel_id");
     }
     public function rooms()
     {
-        return $this->hasMany(Room::class, "HotelID"); 
+        return $this->hasMany(Room::class, "hotel_id"); 
     }
 }
