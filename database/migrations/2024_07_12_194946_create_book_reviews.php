@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->string('title', 250);
+            $table->decimal('rate', 2, 1);
             $table->text('description');
-            $table->foreignId('HotelID')->references('id')->on('hotels')->cascadeOnDelete();
-            $table->foreignId('UserID')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignId('hotel_id')->references('id')->on('hotels')->cascadeOnDelete();
+            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

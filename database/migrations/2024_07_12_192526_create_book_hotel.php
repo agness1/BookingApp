@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', 250);
             $table->text('description');
-            $table->integer('StarCount');
+            $table->integer('star_count');
             $table->string('image_url', 255);
-            $table->foreignId('CitiesID')->references('id')->on('cities')->cascadeOnDelete();
+            $table->foreignId('city_id')->references('id')->on('cities')->cascadeOnDelete();
             $table->timestamps();
         });
     }

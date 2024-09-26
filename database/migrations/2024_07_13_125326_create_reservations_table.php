@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('RoomID')->references('id')->on('rooms')->cascadeOnDelete();
-            $table->foreignId('UserID')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignId('room_id')->references('id')->on('rooms')->cascadeOnDelete();
+            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->date("start_date");
             $table->date("end_date");
             $table->decimal('total_price', total: 8, places: 2);

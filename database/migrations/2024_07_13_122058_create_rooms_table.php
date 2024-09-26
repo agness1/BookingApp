@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->decimal('price', total: 8, places: 2);
-            $table->integer('amount');
-            $table->foreignId('HotelID')->references('id')->on('hotels')->cascadeOnDelete();
+            $table->foreignId('hotel_id')->references('id')->on('hotels')->cascadeOnDelete();
             $table->timestamps();
         });
     }
