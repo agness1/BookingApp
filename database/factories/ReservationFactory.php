@@ -20,8 +20,8 @@ class ReservationFactory extends Factory
         $endDate = (clone $startDate)->modify('+'.rand(1, 14).' days');
 
         return [
-           'RoomID' => \App\Models\Room::factory(),
-            'UserID' => \App\Models\User::factory(),
+           'room_id' => \App\Models\Room::factory(),
+            'user_id' => \App\Models\User::factory(),
             'start_date' => $startDate,
             'end_date' => $endDate,
             'total_price' => $this->faker->randomFloat(2, 50, 1000),

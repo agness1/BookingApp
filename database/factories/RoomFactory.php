@@ -18,8 +18,7 @@ class RoomFactory extends Factory
     {
         return [
             'price' => $this->faker->randomFloat(2, 50, 1000),
-            'amount' => $this->faker->numberBetween(1, 10),
-            'HotelID' => Hotel::factory(),
+            'hotel_id' => Hotel::factory(),
         ];
     }
 }

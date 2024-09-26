@@ -19,8 +19,8 @@ class ReviewFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'HotelID' => \App\Models\Hotel::factory(),
-            'UserID' => \App\Models\User::factory(),
+            'hotel_id' => \App\Models\Hotel::factory(),
+            'user_id' => \App\Models\User::factory(),
         ];
     }
 }
