@@ -5,6 +5,7 @@ interface PostState<T> {
   data: T | null;
   loading: boolean;
   error: AxiosError | null;
+  status: number | null; 
 }
 
 const UsePostData = <T, R = any>(url: string) => {
@@ -12,16 +13,27 @@ const UsePostData = <T, R = any>(url: string) => {
     data: null,
     loading: false,
     error: null,
+    status: null, 
   });
 
   const postData = async (data: T) => {
-    setState({ data: null, loading: true, error: null });
+    setState({ data: null, loading: true, error: null, status: null });
 
     try {
       const response: AxiosResponse<R> = await axios.post(url, data);
-      setState({ data: response.data, loading: false, error: null });
+      setState({ 
+        data: response.data, 
+        loading: false, 
+        error: null, 
+        status: response.status 
+      });
     } catch (error) {
-      setState({ data: null, loading: false, error: error as AxiosError });
+      setState({ 
+        data: null, 
+        loading: false, 
+        error: error as AxiosError, 
+        status: (error as AxiosError).response?.status || null 
+      });
     }
   };
 
