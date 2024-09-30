@@ -15,7 +15,7 @@ const Header: FC<PageProps> = ({ auth }) => {
                     Search low prices on hotels, homes and much more...
                 </h3>
             </div>
-            <SearchForm />
+            <SearchForm auth={auth} />
         </header>
     );
 };
