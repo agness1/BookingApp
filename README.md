@@ -13,10 +13,10 @@ This is a hotel reservation application built using Laravel, React, TypeScript, 
 
 
 ## Screenshots
-![Home Page](public/Screenshots/home_page_screen.png)
-![Hotels](public/Screenshots/hotel_list_screen.png)
-![hotel details](public/Screenshots/hotel_details_screen.png)
-![Dashboard](public/Screenshots/dashboard_screen.png)
+![Home Page](public/screenShots/home_page_screen.png)
+![Hotels](public/screenShots/hotel_list_screen.png)
+![hotel details](public/screenShots/hotel_details_screen.png)
+![Dashboard](public/screenShots/dashboard_screen.png)
 
 ## Installation
 
