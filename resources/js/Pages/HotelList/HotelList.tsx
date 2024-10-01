@@ -22,17 +22,17 @@ const HotelList: FC<{auth:PageProps, hotelData:AvailableHotel}> = ({ hotelData, 
                 className="lg:w-1/4 rounded-lg"
                 alt={hotelItem.hotel_name}
               />
-              <div className="flex flex-col gap-2">
-                <p className="font-bold">{hotelItem.hotel_name}</p>
-                <Rating name="read-only" value={hotelItem.hotel_StarCount} readOnly />
+              <div className="flex flex-col gap-2 lg:items-center font-bold">
+                <p>{hotelItem.hotel_name}</p>
+                <Rating name="read-only" className="" value={hotelItem.hotel_StarCount} readOnly />
               </div>
-              <div>
+              <div className="flex flex-col gap-2 lg:items-center">
                 <p className="font-bold">{hotelItem.city_name}</p>
                 <p>{hotelItem.country_name}</p>
               </div>
-              <div>
-                <p className="font-bold">Rate</p>
-                <p>{hotelItem.reviews_count}</p>
+              <div className="flex flex-col gap-2 lg:items-center">
+                <p className="font-bold">Number of Reviews</p>
+                <p className="">{hotelItem.reviews_count}</p>
               </div>
               <div>
                 <p className="text-2xl font-medium">{(hotelItem.room.price * hotelItem.days).toFixed(1)}<span className="ml-2">€</span></p>

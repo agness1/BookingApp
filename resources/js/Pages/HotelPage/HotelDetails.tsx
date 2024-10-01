@@ -67,7 +67,7 @@ const HotelDetails: FC = () => {
                         <h3 className="text-3xl font-bold text-center p-4 mb-8">
                             Reviews
                         </h3>
-                        {reviewsData == null ? (
+                        {reviewsData !== null ? (
                             <Reviews data={reviewsData} />
                         ) : (
                             <div className="flex lg:flex-row flex-col items-center text-sky-900">
