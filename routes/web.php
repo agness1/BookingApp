@@ -34,16 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/hotels', [HotelController::class, 'showHotels']);
-Route::get('/cities', [CityController::class, 'showCities']);
-Route::post('/search-available-hotels', [HotelController::class, 'showAvailableHotels']);
-Route::post('/createReservation', [ReservationController::class, 'createReservation']);
-Route::get('/reservations', [ReservationController::class, 'showReservation']);
-Route::get('/hotel/{id}', [HotelController::class, 'showHotelDetails']);
-Route::get('/review/{id}', [ReviewController::class, 'showHotelReview']);
-Route::post('/createReview', [ReviewController::class, 'createReview']);
-Route::get('/reviews/user', [ReviewController::class, 'showUserReview']);
-Route::delete('/reviews/delete/{id}', [ReviewController::class, 'DeleteReview']);
-Route::put('/reviews/update/{id}', [ReviewController::class, 'UpdateReview']);
-
 require __DIR__ . '/auth.php';
+require __DIR__.'/hotels.php';
+require __DIR__.'/cities.php';
+require __DIR__.'/reservations.php';
+require __DIR__.'/reviews.php';
